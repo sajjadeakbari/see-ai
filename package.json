@@ -1,0 +1,25 @@
+{
+  "name": "بینای-هوشمند",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "@google/genai": "^1.5.1",
+    "@tailwindcss/browser": "^4.1.10",
+    "react-resize-detector": "^12.1.0",
+    "jotai": "^2.12.5",
+    "perfect-freehand": "^1.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.14.0",
+    "typescript": "~5.7.2",
+    "vite": "^6.2.0"
+  }
+}

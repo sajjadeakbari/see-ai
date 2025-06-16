@@ -1,0 +1,314 @@
+
+
+@import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700&display=swap");
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-size: 13px;
+  background-color: var(--bg-color);
+  color: var(--text-color-primary);
+  font-family: 'Vazirmatn', "Space Mono", monospace;
+  overflow: hidden; /* Prevent body scroll, scrolling handled by internal containers */
+}
+
+input, select, textarea {
+  accent-color: var(--accent-color);
+  font-family: 'Vazirmatn', "Space Mono", monospace;
+}
+
+input[type="text"],
+textarea {
+  color: var(--text-color-primary);
+  border: 1px solid var(--border-color);
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  padding: 10px 14px; 
+  line-height: 1.5; 
+  border-radius: var(--box-radius-small, 6px); /* Consistent border-radius */
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: var(--accent-color);
+  outline: none;
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent-color) 20%, transparent);
+}
+
+.border,
+.border-l,
+.border-t,
+.border-b,
+.border-r {
+  border-color: var(--border-color);
+}
+
+.dark .border,
+.dark .border-l,
+.dark .border-t,
+.dark .border-b,
+.dark .border-r {
+  border-color: var(--dark-border-color);
+}
+
+
+.hide-box .bbox {
+  opacity: 0;
+  z-index: -1;
+}
+.hide-box .bbox.reveal {
+  opacity: 1;
+  z-index: 1;
+}
+
+:root {
+  --bg-color: #F3F3F6;
+  --accent-color: #2872E3; 
+  --accent-color-subtle: color-mix(in srgb, var(--accent-color) 15%, #F3F3F6);
+  --border-color: #DCDFE3; 
+  --dark-border-color: #44474A; /* Slightly adjusted for better definition */
+  --box-color: #141619; /* Not widely used, can be removed if not needed */
+  --text-color-primary: #1E1E1E;
+  --text-color-secondary: #5F6368; /* Slightly darker for better readability */
+  --text-size-large: 18px;
+  --text-size-medium: 14px;
+  --text-size-small: 11px;
+  --box-radius: 8px;
+  --box-radius-small: 6px; /* For inputs and smaller elements */
+  --input-color: #FFFFFF; /* Brighter input background for light mode */
+  font-family: 'Vazirmatn', "Space Mono", monospace;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text-color-primary);
+  background-color: var(--bg-color);
+}
+
+.dark {
+  --bg-color: #1C1F21;
+  --accent-color: #60A5FA; 
+  --accent-color-subtle: color-mix(in srgb, var(--accent-color) 20%, #1C1F21); /* Adjusted mix for dark */
+  --border-color: #44474A; 
+  --dark-border-color: #44474A; 
+  --box-color: #141619;
+  --text-color-primary: #E1E3E6; 
+  --text-color-secondary: #9AA0A6; /* Lighter secondary text for dark mode */
+  --input-color: #2A2D2F; 
+  color: var(--text-color-primary);
+  background-color: var(--bg-color);
+  color-scheme: dark;
+}
+
+main {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+button, .button {
+  appearance: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--text-color-primary);
+  border: 1px solid var(--border-color);
+  padding: 10px 16px; /* Standardized padding */
+  border-radius: var(--box-radius);
+  min-height: 44px; /* Standardized min-height */
+  box-sizing: border-box; 
+  font-weight: 500;
+  transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, transform 0.1s ease-out, box-shadow 0.15s ease-in-out;
+}
+
+button:active, .button:active {
+  transform: translateY(1px);
+}
+
+button.secondary {
+  padding: 8px 14px; 
+  min-height: 40px; 
+  font-weight: 500;
+  background-color: transparent;
+}
+.dark button.secondary {
+   color: var(--text-color-primary); 
+}
+
+button:hover, .button:hover {
+  border-color: var(--accent-color);
+  background-color: color-mix(in srgb, var(--border-color) 40%, transparent); 
+}
+.dark button:hover, .dark .button:hover {
+  border-color: var(--accent-color);
+  background-color: color-mix(in srgb, var(--dark-border-color) 40%, var(--bg-color) 90%);
+}
+
+/* Primary Button Style */
+button.primary, .button.primary {
+  background-color: var(--accent-color);
+  color: #FFFFFF; /* Ensure high contrast for primary button text */
+  border-color: var(--accent-color);
+  font-weight: 600;
+}
+.dark button.primary, .dark .button.primary {
+  color: #FFFFFF; /* Or a very light color if accent is light */
+}
+
+button.primary:hover, .button.primary:hover {
+  background-color: color-mix(in srgb, var(--accent-color) 85%, black);
+  border-color: color-mix(in srgb, var(--accent-color) 85%, black);
+}
+.dark button.primary:hover, .dark .button.primary:hover {
+  background-color: color-mix(in srgb, var(--accent-color) 85%, white);
+  border-color: color-mix(in srgb, var(--accent-color) 85%, white);
+}
+
+/* Focus visible state for accessibility */
+button:focus-visible, .button:focus-visible,
+input[type="checkbox"]:focus-visible,
+input[type="range"]:focus-visible,
+textarea:focus-visible,
+input[type="text"]:focus-visible {
+  outline: none;
+  border-color: var(--accent-color) !important; /* Ensure border color changes on focus */
+  box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--accent-color) !important;
+}
+/* Specific focus for range input if needed, but above should cover */
+input[type="range"]:focus-visible::-webkit-slider-thumb {
+  /* box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--accent-color); */
+}
+input[type="range"]:focus-visible::-moz-range-thumb {
+   /* box-shadow: 0 0 0 2px var(--bg-color), 0 0 0 4px var(--accent-color); */
+}
+
+
+a {
+  cursor: pointer;
+  color: var(--text-color-primary);
+  text-decoration: underline var(--accent-color);
+}
+
+a:hover {
+  text-decoration-color: var(--text-color-primary);
+}
+
+input[type="text"] { /* Already styled above, ensure consistency */
+  appearance: none;
+  padding: 10px 14px;
+}
+
+input[type="text"]::placeholder {
+  color: var(--text-color-secondary);
+}
+
+input[type="range"] {
+  accent-color: var(--accent-color);
+  height: 20px; /* Ensure enough height for thumb and track visibility */
+  background: transparent; /* Remove default track background if needed */
+}
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 6px;
+  background: color-mix(in srgb, var(--border-color) 50%, transparent);
+  border-radius: 3px;
+}
+.dark input[type="range"]::-webkit-slider-runnable-track {
+  background: color-mix(in srgb, var(--dark-border-color) 50%, transparent);
+}
+input[type="range"]::-moz-range-track {
+  height: 6px;
+  background: color-mix(in srgb, var(--border-color) 50%, transparent);
+  border-radius: 3px;
+}
+.dark input[type="range"]::-moz-range-track {
+  background: color-mix(in srgb, var(--dark-border-color) 50%, transparent);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: -5px; /* Adjust to center thumb on track */
+  border: 2px solid var(--bg-color); /* Border to make thumb pop */
+}
+.dark input[type="range"]::-webkit-slider-thumb {
+   border-color: var(--bg-color);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid var(--bg-color);
+}
+.dark input[type="range"]::-moz-range-thumb {
+  border-color: var(--bg-color);
+}
+
+
+.box { /* Not widely used, can be removed if not needed */
+  border-radius: var(--box-radius);
+  background: var(--box-color);
+  padding: 28px 42px;
+  font-size: var(--text-size-large);
+  margin: 30px 0;
+}
+
+.box-caption { /* Not widely used */
+  color: var(--bg-color);
+  background: var(--accent-color);
+  border-radius: var(--box-radius);
+  padding: 14px 28px;
+  max-width: 340px;
+}
+
+/* Custom Scrollbar Styles (Tailwind plugin `scrollbar-thin` is used in App.tsx) */
+/* For Webkit browsers (Chrome, Safari, newer Edge) */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  height: 8px; /* Height of the scrollbar (for horizontal scrollbars) */
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+  background: transparent; /* Or var(--track-color, transparent) if you define it */
+  border-radius: 10px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: var(--thumb-color, #a0aec0); /* Default thumb color (gray-400) */
+  border-radius: 10px;
+  border: 2px solid transparent; /* Creates padding around thumb */
+  background-clip: content-box;
+}
+.scrollbar-thin:hover::-webkit-scrollbar-thumb {
+  background-color: var(--thumb-hover-color, #718096); /* Default thumb hover color (gray-500) */
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+  background-color: var(--dark-thumb-color, #4a5568); /* Default dark thumb color (gray-600) */
+}
+.dark .scrollbar-thin:hover::-webkit-scrollbar-thumb {
+  background-color: var(--dark-thumb-hover-color, #2d3748); /* Default dark thumb hover color (gray-700) */
+}
+
+/* For Firefox */
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: var(--thumb-color, #a0aec0) transparent; /* thumb color track color */
+}
+.scrollbar-thin:hover {
+  scrollbar-color: var(--thumb-hover-color, #718096) transparent;
+}
+.dark .scrollbar-thin {
+  scrollbar-color: var(--dark-thumb-color, #4a5568) transparent;
+}
+.dark .scrollbar-thin:hover {
+  scrollbar-color: var(--dark-thumb-hover-color, #2d3748) transparent;
+}
